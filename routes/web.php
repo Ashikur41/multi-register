@@ -23,6 +23,7 @@ Route::get('/form-one', [FontendController::class, 'FormOne'])->name('form.one')
 Route::get('/form-two', [FontendController::class, 'FormTwo'])->name('form.two');
 Route::get('/form-three', [FontendController::class, 'FormThree'])->name('form.three');
 Route::get('/form-four', [FontendController::class, 'FormFour'])->name('form.four');
+Route::get('/pdf-text', [FontendController::class, 'PdfText'])->name('pdf.text');
 
 
 Route::get('/dashboard', function () {

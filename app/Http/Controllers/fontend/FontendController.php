@@ -23,4 +23,8 @@ class FontendController extends Controller
     {
         return view('fontend.form_four');
     }
+    public function PdfText()
+    {
+        return view('fontend.pdf_text');
+    }
 }
