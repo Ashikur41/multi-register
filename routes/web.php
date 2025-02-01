@@ -26,6 +26,8 @@ Route::get('/form-three', [FontendController::class, 'FormThree'])->name('form.t
 Route::get('/form-four', [FontendController::class, 'FormFour'])->name('form.four');
 Route::get('/pdf-text/{id}', [FontendController::class, 'PdfText'])->name('pdf.text');
 
+Route::get('/payment/page', [FontendController::class, 'PaymentPage'])->name('payment.page');
+
 
 Route::post('/register/info', [RegisterInfoController::class, 'RegisterInfo'])->name('register.info');
 

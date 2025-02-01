@@ -29,4 +29,9 @@ class FontendController extends Controller
         $data = RegisterInfo::find($id)->get();
         return view('fontend.pdf_text',compact('data'));
     }
+
+    public function PaymentPage()
+    {
+        return view('fontend.payment');
+    }
 }

@@ -23,8 +23,13 @@
                 href="{{ url('pdf') }}/Content/font-awesome/css/font-awesome.min.css" />
 
             <div class="container">
-                <button id="exportButton" class="btn btn-lg btn-danger clearfix"><span class="fa fa-file-pdf-o"></span>
-                    Export to PDF</button>
+                <button id="exportButton" class="btn btn-lg btn-danger clearfix">
+                    <span class="fa fa-file-pdf-o"></span>Payment Now
+                </button>
+
+                <button id="exportButton" class="btn btn-lg btn-danger clearfix">
+                    <span class="fa fa-file-pdf-o"></span> Export to PDF
+                </button>
 
                 <table id="exportTable" class="table table-hover">
                     <thead>
@@ -54,6 +59,19 @@
                 href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
             <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
             <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/jszip.min.js"></script>
+
+            {{-- <script>
+                // Define the Laravel route in a JavaScript variable
+                var paymentPageUrl = "{{ route('payment.page') }}";
+            
+                document.getElementById("exportButton").addEventListener("click", function (e) {
+                    e.preventDefault();
+            
+                    // Redirect to the payment page
+                    window.location.href = paymentPageUrl; 
+                });
+            </script> --}}
+            
 
             <script type="text/javascript">
                 jQuery(function($) {
