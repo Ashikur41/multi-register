@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\fontend\FontendController;
+use App\Http\Controllers\RegisterInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,10 @@ Route::get('/form-one', [FontendController::class, 'FormOne'])->name('form.one')
 Route::get('/form-two', [FontendController::class, 'FormTwo'])->name('form.two');
 Route::get('/form-three', [FontendController::class, 'FormThree'])->name('form.three');
 Route::get('/form-four', [FontendController::class, 'FormFour'])->name('form.four');
-Route::get('/pdf-text', [FontendController::class, 'PdfText'])->name('pdf.text');
+Route::get('/pdf-text/{id}', [FontendController::class, 'PdfText'])->name('pdf.text');
+
+
+Route::post('/register/info', [RegisterInfoController::class, 'RegisterInfo'])->name('register.info');
 
 
 Route::get('/dashboard', function () {

@@ -24,22 +24,25 @@
             <div class="col-md-6">
                 <div class="p-4 form-red rounded">
                     <h4 class="text-danger">Red Form</h4>
-                    <form>
+                    <form action="{{route('register.info')}}" method="POST">
+                        @csrf;
+
+                        <input type="hidden" id="user_id" name="user_id">
                         <div class="mb-3">
                             <label for="emailYellow" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="emailYellow" placeholder="Enter email">
+                            <input type="text" class="form-control" name="fast_name" id="emailYellow" placeholder="Enter First Name">
                         </div>
                         <div class="mb-3">
-                            <label for="emailYellow" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="emailYellow" placeholder="Enter email">
+                            <label for="emailYellow" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" name="last_name" id="emailYellow" placeholder="Enter Last Name">
                         </div>
                         <div class="mb-3">
-                            <label for="emailRed" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="emailRed" placeholder="Enter email">
+                            <label for="emailRed" class="form-label">Father's Name</label>
+                            <input type="text" class="form-control" name="father_name" id="emailRed" placeholder="Enter Father's Name">
                         </div>
                         <div class="mb-3">
-                            <label for="passwordRed" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="passwordRed" placeholder="Password">
+                            <label for="passwordRed" class="form-label">Mother's Name</label>
+                            <input type="text" class="form-control" name="mother_name" id="passwordRed" placeholder="Enter Mother's Name">
                         </div>
                         <button type="submit" class="btn btn-danger">Submit</button>
                     </form>

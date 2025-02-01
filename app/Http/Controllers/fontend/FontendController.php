@@ -4,6 +4,7 @@ namespace App\Http\Controllers\fontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\RegisterInfo;
 
 class FontendController extends Controller
 {
@@ -23,8 +24,9 @@ class FontendController extends Controller
     {
         return view('fontend.form_four');
     }
-    public function PdfText()
+    public function PdfText($id)
     {
-        return view('fontend.pdf_text');
+        $data = RegisterInfo::find($id)->get();
+        return view('fontend.pdf_text',compact('data'));
     }
 }
