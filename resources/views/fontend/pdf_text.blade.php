@@ -14,7 +14,7 @@
         <script type="text/javascript" src="{{ url('pdf') }}/bootstrap/js/bootstrap.min.js"></script>
     </head>
 
-    <body>
+    <body onload="checkPaymentStatus()">
 
         <div class="container">
 
@@ -23,11 +23,11 @@
                 href="{{ url('pdf') }}/Content/font-awesome/css/font-awesome.min.css" />
 
             <div class="container">
-                <button id="exportButton" class="btn btn-lg btn-danger clearfix">
-                    <span class="fa fa-file-pdf-o"></span>Payment Now
+                <button id="paymentButton" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#paymentModal">
+                    <span class="fa fa-credit-card"></span> Payment Now
                 </button>
 
-                <button id="exportButton" class="btn btn-lg btn-danger clearfix">
+                <button id="exportButton" class="btn btn-lg btn-danger mt-3" style="display: none;">
                     <span class="fa fa-file-pdf-o"></span> Export to PDF
                 </button>
 
@@ -54,24 +54,68 @@
                 </table>
             </div>
 
+            <!-- Payment Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Enter Payment Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('payment.info')}}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="cardNumber">Cardholder Name</label>
+                            <input type="text" name="card_holder_name" class="form-control" id="cardNumber" placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="number"  class="form-control" id="cardNumber" name="card_number" placeholder="1234 5678 9012 3456">
+                        </div>
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="month" name="expiration_date" class="form-control" id="expiryDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="number" name="cvv" class="form-control" id="cvv" placeholder="123">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="processPayment()">Pay Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap & jQuery Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             <!-- you need to include the shieldui css and js assets in order for the components to work -->
             <link rel="stylesheet" type="text/css"
                 href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
             <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
             <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/jszip.min.js"></script>
 
-            {{-- <script>
-                // Define the Laravel route in a JavaScript variable
-                var paymentPageUrl = "{{ route('payment.page') }}";
-            
-                document.getElementById("exportButton").addEventListener("click", function (e) {
-                    e.preventDefault();
-            
-                    // Redirect to the payment page
-                    window.location.href = paymentPageUrl; 
-                });
-            </script> --}}
-            
+<script>
+function processPayment() {
+    // Simulating payment success (replace with actual payment gateway logic)
+    let paymentSuccess = confirm("Was the payment successful?");
+
+    if (paymentSuccess) {
+        document.getElementById("exportButton").style.display = "inline-block"; // Show PDF button
+        document.getElementById("paymentButton").style.display = "none"; // Hide payment button
+    } else {
+        alert("Payment was not successful. You cannot export to PDF.");
+    }
+}
+
+</script>
 
             <script type="text/javascript">
                 jQuery(function($) {

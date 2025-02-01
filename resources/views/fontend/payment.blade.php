@@ -13,7 +13,7 @@
                 box-sizing: border-box;
                 font-family: Arial, sans-serif;
             }
-            
+
             body {
                 background-color: #f5f5f5;
                 display: flex;
@@ -21,7 +21,7 @@
                 align-items: center;
                 height: 100vh;
             }
-    
+
             .payment-container {
                 background: white;
                 padding: 20px;
@@ -29,24 +29,24 @@
                 box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
                 width: 400px;
             }
-    
+
             h2 {
                 text-align: center;
                 color: #333;
                 margin-bottom: 20px;
             }
-    
+
             .input-group {
                 margin-bottom: 15px;
             }
-    
+
             .input-group label {
                 display: block;
                 font-size: 14px;
                 margin-bottom: 5px;
                 color: #555;
             }
-    
+
             .input-group input {
                 width: 100%;
                 padding: 10px;
@@ -54,7 +54,7 @@
                 border-radius: 5px;
                 font-size: 16px;
             }
-    
+
             .card-icons {
                 display: flex;
                 gap: 10px;
@@ -63,7 +63,7 @@
                 justify-content: center;
                 color: #555;
             }
-    
+
             .payment-btn {
                 width: 100%;
                 padding: 12px;
@@ -75,11 +75,11 @@
                 cursor: pointer;
                 transition: 0.3s;
             }
-    
+
             .payment-btn:hover {
                 background: #218838;
             }
-    
+
             .total-amount {
                 text-align: center;
                 font-size: 20px;
@@ -90,47 +90,48 @@
         </style>
     </head>
     <body>
-    
+
         <div class="payment-container">
             <h2>Payment Details</h2>
-            
+
             <div class="total-amount">
                 Total Amount: <span>$99.99</span>
             </div>
-    
+
             <div class="card-icons">
                 <i class="fa-brands fa-cc-visa"></i>
                 <i class="fa-brands fa-cc-mastercard"></i>
                 <i class="fa-brands fa-cc-amex"></i>
                 <i class="fa-brands fa-cc-paypal"></i>
             </div>
-    
-            <form>
+
+            <form action="{{route('payment.info')}}" method="POST">
+                @csrf
                 <div class="input-group">
                     <label>Cardholder Name</label>
-                    <input type="text" placeholder="John Doe" required>
+                    <input type="text" name="card_holder_name" placeholder="John Doe" required>
                 </div>
-    
+
                 <div class="input-group">
                     <label>Card Number</label>
-                    <input type="text" placeholder="1234 5678 9012 3456" required>
+                    <input type="number" name="card_number" placeholder="1234 5678 9012 3456" required>
                 </div>
-    
+
                 <div class="input-group">
                     <label>Expiration Date</label>
-                    <input type="month" required>
+                    <input type="month" name="expiration_date" required>
                 </div>
-    
+
                 <div class="input-group">
                     <label>CVV</label>
-                    <input type="password" placeholder="123" required>
+                    <input type="number" name="cvv" placeholder="123" required>
                 </div>
-    
+
                 <button type="submit" class="payment-btn">Pay Now</button>
             </form>
         </div>
-    
+
     </body>
     </html>
-    
+
 </x-app-layout>

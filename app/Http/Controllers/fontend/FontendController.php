@@ -5,6 +5,7 @@ namespace App\Http\Controllers\fontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\RegisterInfo;
+use Illuminate\Support\Facades\Auth;
 
 class FontendController extends Controller
 {
@@ -24,9 +25,11 @@ class FontendController extends Controller
     {
         return view('fontend.form_four');
     }
-    public function PdfText($id)
+    public function PdfText()
     {
-        $data = RegisterInfo::find($id)->get();
+        $user = Auth::user();
+        // Fetch the user's data from RegisterInfo
+        $data = RegisterInfo::where('user_id', $user->id)->get();
         return view('fontend.pdf_text',compact('data'));
     }
 
